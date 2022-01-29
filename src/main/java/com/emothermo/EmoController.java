@@ -25,10 +25,10 @@ public class EmoController {
             @RequestParam String description,
             HttpServletResponse response) throws IOException {
         System.out.println("You entered:\nEmail: " + email + "\n" +
-                "Emo1: " + emo1 + "\n" +
-                "Emo2: " + emo2 + "\n" +
-                "Emo3: " + emo3 + "\n" +
-                "Emo4: " + emo4 + "\n" +
+                "Radost: " + emo1 + "\n" +
+                "Tuga: " + emo2 + "\n" +
+                "Ljutnja: " + emo3 + "\n" +
+                "Strah: " + emo4 + "\n" +
                 "Description: " + description);
 
         EmoRecord record = new EmoRecord(new Date(), email, emo1, emo2, emo3, emo4, description);
