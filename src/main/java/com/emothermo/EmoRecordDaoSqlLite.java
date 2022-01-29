@@ -1,11 +1,18 @@
 package com.emothermo;
 
+import org.springframework.stereotype.Service;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class EmoRecordDaoSqlLite {
     private Connection conn;
+
+    public EmoRecordDaoSqlLite() {
+        connectToDB("emothermo.db");
+    }
 
     /*
 
@@ -30,7 +37,7 @@ public class EmoRecordDaoSqlLite {
                 + "	emo2_sad integer,\n"
                 + "	emo3_anger integer,\n"
                 + "	emo4_fear integer,\n"
-                + "	desc text,\n"
+                + "	desc text\n"
                 + ");";
 
         try {
@@ -52,9 +59,9 @@ public class EmoRecordDaoSqlLite {
             s.setDate(1, new Date(emoRecord.getTimestamp().getTime()));
             s.setString(2, emoRecord.getEmail());
             s.setInt(3, emoRecord.getEmo1());
-            s.setInt(4, emoRecord.getEmo1());
-            s.setInt(5, emoRecord.getEmo1());
-            s.setInt(6, emoRecord.getEmo1());
+            s.setInt(4, emoRecord.getEmo2());
+            s.setInt(5, emoRecord.getEmo3());
+            s.setInt(6, emoRecord.getEmo4());
             s.setString(7, emoRecord.getDescription());
 
             s.execute();
@@ -81,7 +88,7 @@ public class EmoRecordDaoSqlLite {
                 s.setEmo2(resultSet.getInt("emo1_sad"));
                 s.setEmo3(resultSet.getInt("emo1_anger"));
                 s.setEmo4(resultSet.getInt("emo1_fear"));
-                s.setDescription(resultSet.getString("description"));
+                s.setDescription(resultSet.getString("desc"));
 
                 students.add(s);
             }

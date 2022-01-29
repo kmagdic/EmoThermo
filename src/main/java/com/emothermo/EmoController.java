@@ -1,5 +1,6 @@
 package com.emothermo;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +15,8 @@ import java.util.List;
 public class EmoController {
     List<EmoRecord> emoRecordList = new ArrayList<EmoRecord>();
 
+    @Autowired
+    EmoRecordDaoSqlLite emoRecordDaoSqlLite;
 
     @GetMapping("/emothermo/save_emo")
     String save (
@@ -33,6 +36,8 @@ public class EmoController {
 
         EmoRecord record = new EmoRecord(new Date(), email, emo1, emo2, emo3, emo4, description);
         System.out.printf("Emo received: " + record);
+        emoRecordDaoSqlLite.insertToDB(record);
+
 
         return "done";
     }
