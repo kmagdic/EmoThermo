@@ -21,6 +21,10 @@ public class EmoRecord {
         this.description = description;
     }
 
+    public EmoRecord() {
+
+    }
+
     public String getEmail() {
         return email;
     }
@@ -67,6 +71,14 @@ public class EmoRecord {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Date getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
     }
 
     @Override
